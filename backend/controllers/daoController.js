@@ -8,10 +8,10 @@ import User from '../models/UserModel.js';
 export const addDaoController = asyncHandler(async (req, res) => {
   try {
     const {
-        email,
+      email,
       full_name,
       date_founded,
-      //   about_dao,
+      about_dao,
       logo_link,
       category,
       gov_token_name,
@@ -20,6 +20,7 @@ export const addDaoController = asyncHandler(async (req, res) => {
       discord_link,
       website_link,
       dao_structure,
+      description,
       voting_process,
       total_value_locked,
       revenue_streams,
@@ -43,8 +44,9 @@ export const addDaoController = asyncHandler(async (req, res) => {
       email,
       full_name,
       date_founded,
-      // about_dao,
+      about_dao,
       logo_link,
+      description,
       category,
       gov_token_name,
       token_symbol,
@@ -64,12 +66,12 @@ export const addDaoController = asyncHandler(async (req, res) => {
     const newMember = new MemberDao({ member: members });
     await newMember.save();
 
-    const newUser = new  User({
-        email,
-        wallet,
-      });
-      await newUser.save();
-  
+    const newUser = new User({
+      email,
+      wallet,
+    });
+    await newUser.save();
+
     const newSocialMedia = new SocialMedia({
       twitter_handle,
       github_organization_handle,
@@ -80,11 +82,37 @@ export const addDaoController = asyncHandler(async (req, res) => {
     res.json({
       message: `${full_name} created successfully`,
       savedDao,
-      newMember,
-      newSocialMedia,
     });
   } catch (error) {
     console.log(error.message);
     res.status(500).json({ message: 'Server error' });
+  }
+});
+
+export const getAllDaoController = asyncHandler(async (req, res) => {
+  try {
+    const dao = await Dao.find({});
+
+    if (dao) {
+      res.json(dao);
+    } else {
+      res.status(404).json({ message: 'Dao not found' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: 'Server error: try again later' });
+  }
+});
+
+export const getDaoByIdController = asyncHandler(async (req, res) => {
+  try {
+    const dao = await Dao.findById(req.params.daoId);
+
+    if (dao) {
+      res.json(dao);
+    } else {
+      res.status(404).json({ message: 'Dao not found' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: 'Server error: try again later' });
   }
 });

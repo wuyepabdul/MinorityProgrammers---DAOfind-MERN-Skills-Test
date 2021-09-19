@@ -1,8 +1,16 @@
 import express from 'express';
-import { addDaoController } from '../controllers/daoController.js';
+import {
+  addDaoController,
+  getAllDaoController,
+  getDaoByIdController,
+} from '../controllers/daoController.js';
 
 const router = express.Router();
 
-router.post('/', addDaoController);
+router.get('/', addDaoController);
+
+router.post('/', getAllDaoController);
+
+router.get('/:daoId', getDaoByIdController);
 
 export default router;

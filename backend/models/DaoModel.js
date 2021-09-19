@@ -3,6 +3,13 @@ const { ObjectId } = mongoose.Schema.Types;
 
 const DaoSchema = new mongoose.Schema(
   {
+    email: {
+      type: String,
+      trim: true,
+      required: true,
+      text: true,
+      maxlength: 32,
+    },
     full_name: {
       type: String,
       trim: true,
@@ -21,6 +28,11 @@ const DaoSchema = new mongoose.Schema(
       type: String,
       default:
         'https://res.cloudinary.com/dulswuyep/image/upload/v1601038023/profiles/noPic2_rmgvsc.png',
+    },
+    about_dao: {
+      type: String,
+      maxlength: 2000,
+      text: true,
     },
     category: {
       enum: [
