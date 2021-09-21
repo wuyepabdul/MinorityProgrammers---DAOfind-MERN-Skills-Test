@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import { isEmpty } from 'validator';
 import { createNewDao } from '../api/addDao';
-import { toast } from 'react-toastify';
-import { useHistory } from 'react-router-dom';
 
 const AddPage = () => {
-  const history = useHistory();
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState('');
   const [daoInfo, setDaoInfo] = useState({
@@ -14,37 +11,13 @@ const AddPage = () => {
     date_founded: '',
     about_dao: '',
     logo_link: '',
-    category: [
-      'Protocol',
-      'Service',
-      'Grant',
-      'Media',
-      'Social',
-      'Investment',
-      'Platform',
-      'Collector',
-    ],
+    category: '',
     gov_token_name: '',
     token_symbol: '',
-    blockchain: [
-      'Ethereum',
-      'Polygon',
-      'Binance_Smart_Chain',
-      'Harmony',
-      'Solana',
-      'Algorand',
-      'Stellar',
-      'NEAR',
-      'IBM_Blockchain',
-      'Hyperledger_Fabric',
-      'Tezos',
-      'EOSIO',
-      'Waves',
-      'Riple',
-    ],
+    blockchain: '',
     discord_link: '',
     website_link: '',
-    dao_structure: ['shares', 'gov_token', 'tbd'],
+    dao_structure: '',
     description: '',
     voting_process: '',
     total_value_locked: '',
@@ -82,7 +55,7 @@ const AddPage = () => {
   } = daoInfo;
 
   const onChange = (e) => {
-    console.log('target', e.target.value);
+    console.log(e.target.value);
     setDaoInfo({
       ...daoInfo,
       [e.target.name]: e.target.value,
@@ -91,55 +64,13 @@ const AddPage = () => {
   };
 
   const createDao = (data) => {
-    try {
-      createNewDao(data);
-      console.log(data);
-      toast.success('success');
-      history.push('/');
-    } catch (error) {
-      toast.error('error');
-    }
-    /*  createNewDao(data)
-      .then((response) => {
-        console.log('response', response.message);
-        if (response) {
-          toast.success('success');
-        }
-      })
-      .catch((error) => {
-        console.log(error.message);
-        toast.error('error');
-      }); */
+    createNewDao(data)
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error.message));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     console.log(email, full_name, about_dao);
-    const data = {
-      email,
-      full_name,
-      date_founded,
-      about_dao,
-      logo_link,
-      category,
-      gov_token_name,
-      token_symbol,
-      blockchain,
-      discord_link,
-      website_link,
-      dao_structure,
-      description,
-      voting_process,
-      total_value_locked,
-      revenue_streams,
-      tech_stack,
-      governance_token_address,
-      notes,
-      twitter_handle,
-      github_organization_handle,
-      headquarters,
-    };
-    createDao(data);
   };
 
   return (
@@ -148,7 +79,7 @@ const AddPage = () => {
         <h1 className='form-heading'>Add Dao Form</h1>
         <div className='form-container'>
           <div className='group mb-3 '>
-            <label htmlFor='email' className='form-label'>
+            <label for='email' className='form-label'>
               Email
             </label>
             <input
@@ -161,51 +92,63 @@ const AddPage = () => {
             />
           </div>
           <div className='group mb-3 '>
-            <label htmlFor='fullname' className='form-label'>
+            <label for='fullname' className='form-label'>
               Name of Dao
             </label>
             <input
               className='form-control form-control-lg'
               onChange={onChange}
               type='text'
-              name='full_name'
+              name='fullName'
               value={full_name}
               id='fullname'
             />
           </div>
-
           <div className='group mb-3 '>
-            <label htmlFor='aboutDao' className='form-label'>
+            <label for='dateFounded' className='form-label'>
+              Date Founded
+            </label>
+            <input
+              type='date'
+              name='date'
+              value={date_founded}
+              onChange={onChange}
+              className='form-control ml-3 form-control-lg'
+              id='dateFounded'
+            />
+          </div>
+          <div className='group mb-3 '>
+            <label for='aboutDao' className='form-label'>
               About Your Dao
             </label>
             <input
               onChange={onChange}
               type='text'
-              name='about_dao'
+              name='aboutDao'
               value={about_dao}
               className='form-control form-control-lg'
               id='aboutDao'
             />
           </div>
           <div className='group mb-3 '>
-            <label htmlFor='logoLink' className='form-label'>
+            <label for='logoLink' className='form-label'>
               Link to Logo
             </label>
             <input
               onChange={onChange}
               type='url'
-              name='logo_link'
+              name='logoLink'
               value={logo_link}
               className='form-control ml-3   form-control-lg'
               id='logoLink'
             />
           </div>
           <div className='group mb-3 '>
-            <label htmlFor='twitterHandle' className='form-label'>
+            <label for='twitterHandle' className='form-label'>
               Twitter Handle{' '}
             </label>
             <input
-              name='twitter_handle'
+              name='twitterHandle'
               onChange={onChange}
               value={twitter_handle}
               type='url'
@@ -215,11 +158,11 @@ const AddPage = () => {
           </div>
 
           <div className='group mb-3 '>
-            <label htmlFor='govTokenName' className='form-label'>
+            <label for='govTokenName' className='form-label'>
               Governance Token Name
             </label>
             <input
-              name='gov_token_name'
+              name='govTokenName'
               onChange={onChange}
               value={gov_token_name}
               type='text'
@@ -228,11 +171,11 @@ const AddPage = () => {
             />
           </div>
           <div className='group mb-3 '>
-            <label htmlFor='govTokenSymbol' className='form-label'>
+            <label for='govTokenSymbol' className='form-label'>
               Governance Token Symbol
             </label>
             <input
-              name='token_symbol'
+              name='govTokenSymbol'
               onChange={onChange}
               value={token_symbol}
               type='text'
@@ -241,11 +184,11 @@ const AddPage = () => {
             />
           </div>
           <div className='group mb-3 '>
-            <label htmlFor='githubLink' className='form-label'>
+            <label for='githubLink' className='form-label'>
               Github Link
             </label>
             <input
-              name='github_organization_handle'
+              name='githubLink'
               onChange={onChange}
               value={github_organization_handle}
               type='url'
@@ -255,7 +198,20 @@ const AddPage = () => {
           </div>
 
           <div className='group mb-3 '>
-            <label htmlFor='headquarters' className='form-label'>
+            <label for='daoStructure' className='form-label'>
+              DAO Structure
+            </label>
+            <input
+              name='daoStructure'
+              onChange={onChange}
+              value={dao_structure}
+              type='text'
+              className='form-control form-control-lg'
+              id='daoStructure'
+            />
+          </div>
+          <div className='group mb-3 '>
+            <label for='headquarters' className='form-label'>
               Headquarters
             </label>
             <input
@@ -268,11 +224,11 @@ const AddPage = () => {
             />
           </div>
           <div className='group mb-3 '>
-            <label htmlFor='votingProcess' className='form-label'>
+            <label for='votingProcess' className='form-label'>
               Voting Process
             </label>
             <input
-              name='voting_process'
+              name='votingProcess'
               onChange={onChange}
               value={voting_process}
               type='text'
@@ -281,24 +237,24 @@ const AddPage = () => {
             />
           </div>
           <div className='group mb-3 '>
-            <label htmlFor='totalValueLocked' className='form-label'>
+            <label for='totalValueLocked' className='form-label'>
               Total Value Locked
             </label>
             <input
-              name='total_value_locked'
+              name='totalValueLocked'
               onChange={onChange}
               value={total_value_locked}
-              type='number'
+              type='text'
               className='form-control form-control-lg'
               id='totalValueLocked'
             />
           </div>
           <div className='group mb-3 '>
-            <label htmlFor='daoFunds' className='form-label'>
+            <label for='daoFunds' className='form-label'>
               DAO Funds
             </label>
             <input
-              name='revenue_streams'
+              name='daoFunds'
               onChange={onChange}
               value={revenue_streams}
               type='text'
@@ -307,11 +263,11 @@ const AddPage = () => {
             />
           </div>
           <div className='group mb-3 '>
-            <label htmlFor='techStack' className='form-label'>
+            <label for='techStack' className='form-label'>
               Tech stack
             </label>
             <input
-              name='tech_stack'
+              name='techStack'
               onChange={onChange}
               value={tech_stack}
               type='text'
@@ -320,11 +276,11 @@ const AddPage = () => {
             />
           </div>
           <div className='group mb-3 '>
-            <label htmlFor='govTokenAddress' className='form-label'>
+            <label for='govTokenAddress' className='form-label'>
               Governance token address
             </label>
             <input
-              name='governance_token_address'
+              name='govTokenAddress'
               onChange={onChange}
               value={governance_token_address}
               type='text'
@@ -333,7 +289,7 @@ const AddPage = () => {
             />
           </div>
           <div className='group mb-3 '>
-            <label htmlFor='notes' className='form-label'>
+            <label for='notes' className='form-label'>
               Additional notes
             </label>
             <input
@@ -346,7 +302,7 @@ const AddPage = () => {
             />
           </div>
           <div className='group mb-3 '>
-            <label htmlFor='notes' className='form-label'>
+            <label for='notes' className='form-label'>
               Description
             </label>
             <textarea
@@ -359,24 +315,77 @@ const AddPage = () => {
               maxLength='2000'
             />
           </div>
-          <div className='group mb-3 '>
-            <label htmlFor='dateFounded' className='form-label'>
-              Date Founded
-            </label>
-            <input
-              type='date'
-              name='date_founded'
-              value={date_founded}
-              onChange={onChange}
-              className='form-control ml-3 form-control-lg'
-              id='dateFounded'
-            />
+
+          <div className='checkboxes'>
+            <div className='group mb-3 '>
+              <label for='blockchain' className='form-label'>
+                Blockchains
+              </label>
+              <div class='form-check'>
+                <input
+                  class='form-check-input checkbox'
+                  onChange={onChange}
+                  type='checkbox'
+                  value={blockchain}
+                  id='defaultCheck1'
+                />
+                <label class='form-label' for='defaultCheck1'>
+                  checkbox
+                </label>
+              </div>
+            </div>
+            <div className='group mb-3 '>
+              <label for='blockchain' className='form-label'>
+                Category
+              </label>
+              <div class='form-check'>
+                <input
+                  class='form-check-input '
+                  onChange={onChange}
+                  value={blockchain}
+                  type='checkbox'
+                  id='defaultCheck1'
+                />
+                <label class='form-label' for='defaultCheck1'>
+                  checkbox 1
+                </label>
+              </div>
+            </div>
+            <div className='group mb-3'>
+              <div class='form-check'>
+                <input
+                  class='form-check-input '
+                  onChange={onChange}
+                  type='radio'
+                  name='exampleRadios'
+                  id='exampleRadios1'
+                  value='option1'
+                  checked
+                />
+                <label class='form-label' for='exampleRadios1'>
+                  Default radio
+                </label>
+              </div>
+              <div class='form-check'>
+                <input
+                  class='form-check-input '
+                  onChange={onChange}
+                  type='radio'
+                  name='exampleRadios'
+                  id='exampleRadios1'
+                  value='option1'
+                />
+                <label class='form-label' for='exampleRadios1'>
+                  Default radio
+                </label>
+              </div>
+            </div>
+            <div className='button-div'>
+              <button type='submit' className='btn btn-default btn-lg'>
+                Submit
+              </button>
+            </div>
           </div>
-        </div>
-        <div className='button-div '>
-          <button type='submit' className='btn btn-default btn-lg '>
-            Submit
-          </button>
         </div>
       </form>
     </div>

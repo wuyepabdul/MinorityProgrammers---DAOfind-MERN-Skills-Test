@@ -22,10 +22,11 @@ const AddPage = () => {
               influenced by a central government
             </p>
             <div className='article-btn'>
-            <button className='btn btn-info'>Learn More <i className="fas fa-arrow-right"></i></button>
+              <button className='btn btn-info'>
+                Learn More <i className='fas fa-arrow-right'></i>
+              </button>
+            </div>
           </div>
-          </div>
-          
         </article>
         <article className='article-container d-flex'>
           <div className='img-container'>
@@ -45,7 +46,9 @@ const AddPage = () => {
               requirements
             </p>
             <div className='article-btn'>
-              <button className='btn btn-info'>Learn More <i className="fas fa-arrow-right"></i></button>
+              <button className='btn btn-info'>
+                Learn More <i className='fas fa-arrow-right'></i>
+              </button>
             </div>
           </div>
         </article>
@@ -54,7 +57,7 @@ const AddPage = () => {
             <img src={daoLandscape} alt='dao landscape' />
           </div>
           <div className='article-writeup d-flex'>
-            <h4>DAO Landscape</h4>
+            <h4 className='article-heading'>DAO Landscape</h4>
             <p>
               DAOs have taken center stage. Ever since 14% of the entire ETH
               supply was locked in The DAO in early 2016, we’ve spent the last
@@ -63,7 +66,9 @@ const AddPage = () => {
               bank account
             </p>
             <div className='article-btn'>
-              <button className='btn btn-info'>Learn More <i className="fas fa-arrow-right"></i></button>
+              <button className='btn btn-info'>
+                Learn More <i className='fas fa-arrow-right'></i>
+              </button>
             </div>
           </div>
         </article>

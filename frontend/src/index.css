@@ -1,13 +1,93 @@
 * {
   margin: 0;
   padding: 0;
+  color: #fff;
   box-sizing: border-box;
   background: linear-gradient(95.81deg, #4cb8ff 2.29%, #4685ff 61.39%);
   font-family: 'Inter', sans-serif;
 }
 
+.react-link {
+  color: #fff;
+}
+
+.react-link:hover {
+  color: #fff;
+}
+
 .main-container {
   position: relative;
+}
+
+li,
+i,
+form,
+h1,
+h2,
+h3,
+h4,
+img,
+p,
+article,
+.numberOfDaos-container,
+.numberOfDaos,
+.home-container,
+.form-label,
+.form-check-input,
+.form-check,
+.button-div,
+.nav-menu,
+.addDao,
+.form-heading,
+.group,
+.form-label,
+.searchbox,
+.learn-container,
+.btn-container,
+.badges-container,
+.badges-list,
+.btn-container > div,
+svg,
+tr,
+th,
+td,
+tbody,
+thead,
+table,
+.table-div,
+.react-link {
+  background: none;
+}
+
+tr,
+th,
+td,
+tbody,
+thead,
+table {
+  border: none;
+}
+
+.th-heading:hover {
+  cursor: pointer;
+  background: linear-gradient(95.81deg, #4cb8ff 2.29%, #4685ff 61.39%);
+  border-radius: 5px;
+  padding-top: 10px;
+  margin-bottom: 5px;
+}
+
+.tr-class:hover {
+  cursor: pointer;
+  background: linear-gradient(95.81deg, #4cb8ff 2.29%, #4685ff 61.39%);
+  border-radius: 5px;
+}
+
+tbody,
+table {
+  background: none;
+  border-right: none;
+  border-top: 1px solid #fff;
+  padding-top: 5px;
 }
 
 .side-bar {
@@ -81,31 +161,72 @@
   color: #fff;
 }
 
-.addDao {
-  width: 100%;
+.badges-container {
+  justify-content: space-between;
 }
 
-li,
-i,
-form,
-.form-label,
-.form-check-input,
-.form-check,
-.button-div,
-.nav-menu,
-.addDao,
-.form-heading,
-.group,
-.form-label,
-.searchbox,
-h1,
-h3,
-h4,
-img,
-p,
-article,
-.learn-container {
-  background: none;
+.badge {
+  padding: 5px 20px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  background: #4685ff;
+}
+
+.all {
+  background: #345ba0;
+}
+
+.badge:hover {
+  transform: scale(1.1) translateZ(0);
+  padding: 5px 20px;
+  cursor: pointer;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.numberOfDaos-container {
+  justify-content: space-between;
+}
+
+.numberOfDaos {
+  background: #345ba0;
+  box-shadow: 0 20px 50px rgb(59 43 91 / 70%);
+  color: #fff;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 400px;
+  margin: 20px 0;
+}
+
+.numberOfDaos:first-child {
+  margin-right: 15px;
+}
+
+.btn-container {
+  background: #345ba0;
+  color: #fff;
+  border: 1px solid #345ba0;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.btn-container:hover {
+  cursor: pointer;
+}
+
+.homeDaoHeading {
+  font-size: 22px;
+}
+
+.addDao {
+  width: 100%;
+  padding: 30px 20px;
 }
 
 .form-container {
@@ -115,7 +236,9 @@ article,
 
 .form-heading {
   color: #fff;
-  text-align: center;
+  text-align: left;
+  padding-bottom: 20px;
+  font-weight: 900;
 }
 
 .group {
@@ -175,11 +298,21 @@ article,
 .article-container {
   flex-direction: column;
   border-radius: 15px;
-  width: 300px;
-  max-height: 100%;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 300px;
+  /* height: 1000px; */
   margin-left: 20px;
   padding: 50px 20px;
   margin-bottom: 30px;
+}
+
+.article-writeup h4 {
+  font-size: 20px;
+}
+
+.article-writeup p {
+  font-size: 15px;
 }
 
 .img-container {
@@ -218,7 +351,7 @@ h4 {
   color: #007bff;
   font-weight: 900;
   font-size: 15px;
-  padding:15px 20px ;
+  padding: 15px 20px;
 }
 
 .article-btn button:hover {
@@ -227,4 +360,78 @@ h4 {
   font-weight: 900;
   font-size: 15px;
   transform: scale(1.1) translateZ(0px);
+}
+
+.edit-dao-container {
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px;
+}
+
+.edit-img-container {
+  /* margin: 20px; */
+  align-items: center;
+}
+
+.edit-img-container h1 {
+  margin-left: 20px;
+}
+
+.img-container {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+}
+
+.edit-img-container img {
+  width: 100%;
+}
+
+.description-links {
+  margin-top: 30px;
+}
+
+.description {
+  width: 45%;
+  padding: 15px 15px 40px 15px;
+  color: #fff;
+  border-radius: 15px;
+  margin-right: 20px;
+  border: 1px solid #007bff;
+}
+
+.description p {
+  background: inherit;
+}
+
+.links-container {
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 15px;
+  background: none;
+}
+
+.links-div,
+.tvl-div {
+  color: #fff;
+  border: 1px solid #2257c0;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.tvl-div {
+  border-radius: 15px;
+}
+
+.token-container {
+  background: none;
+}
+
+.table-body,
+.token-table {
+  border-top: none;
+}
+
+.edit-dao-container {
+  background: none;
 }

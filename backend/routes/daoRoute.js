@@ -7,9 +7,9 @@ import {
 
 const router = express.Router();
 
-router.get('/', addDaoController);
+router.get('/', getAllDaoController);
 
-router.post('/', getAllDaoController);
+router.post('/', addDaoController);
 
 router.get('/:daoId', getDaoByIdController);
 

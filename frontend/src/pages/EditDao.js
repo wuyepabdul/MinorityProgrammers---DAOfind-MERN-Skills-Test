@@ -80,9 +80,9 @@ const AddPage = () => {
     github_organization_handle,
     headquarters,
   } = daoInfo;
+  
 
   const onChange = (e) => {
-    console.log('target', e.target.value);
     setDaoInfo({
       ...daoInfo,
       [e.target.name]: e.target.value,
@@ -372,11 +372,45 @@ const AddPage = () => {
               id='dateFounded'
             />
           </div>
-        </div>
-        <div className='button-div '>
-          <button type='submit' className='btn btn-default btn-lg '>
-            Submit
-          </button>
+
+          <div className='checkboxes'>
+            <div className='group mb-3 '>
+              <label htmlFor='blockchain' className='form-label'>
+                Blockchains
+              </label>
+              <div className='form-check'>
+                {daoInfo.blockchain.map((element)=>(<>  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+  <label class="form-check-label" for="flexCheckDefault">
+    Default checkbox
+  </label> </>)} 
+
+              </div>
+            </div>
+
+            <div className='group mb-3 '>
+              <label htmlFor='daoStructure' className='form-label'>
+                DAO Structure
+              </label>
+
+              <input
+                className='form-check-input '
+                onChange={onChange}
+                type='radio'
+                name='dao_structure'
+                id='dao_structure'
+                value={dao_structure}
+              />
+              <label className='form-label' htmlFor='exampleRadios1'>
+                Not Yet Decided
+              </label>
+            </div>
+
+            <div className='button-div'>
+              <button type='submit' className='btn btn-default btn-lg'>
+                Submit
+              </button>
+            </div>
+          </div>
         </div>
       </form>
     </div>

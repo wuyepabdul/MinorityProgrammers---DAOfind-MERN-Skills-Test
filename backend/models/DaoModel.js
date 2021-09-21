@@ -34,7 +34,8 @@ const DaoSchema = new mongoose.Schema(
       maxlength: 2000,
       text: true,
     },
-    category: {
+  /*   category: {
+      type:String,
       enum: [
         'Protocol',
         'Service',
@@ -45,7 +46,7 @@ const DaoSchema = new mongoose.Schema(
         'Platform',
         'Collector',
       ],
-    },
+    }, */
     governance_token_name: {
       type: String,
       trim: true,
@@ -61,9 +62,10 @@ const DaoSchema = new mongoose.Schema(
       trim: true,
       text: true,
     },
-    dao_structure: {
+ /*    dao_structure: {
+      type:String,
       enum: ['shares', 'gov_token', 'tbd'],
-    },
+    }, */
     revenue_streams: {
       type: String,
       trim: true,
@@ -87,7 +89,11 @@ const DaoSchema = new mongoose.Schema(
       type: String,
       text: true,
     },
-    blockchain: {
+    twitter_handle: { type: String },
+    github_organization_handle: { type: String },
+    discord_link: { type: String },
+/*     blockchain: {
+      type:String,
       enum: [
         'Ethereum',
         'Polygon',
@@ -104,14 +110,14 @@ const DaoSchema = new mongoose.Schema(
         'Waves',
         'Riple',
       ],
-    },
+    }, */
     headquarters: {
-      type: { String },
-      text: true,
+      type: String,
     },
-    approvalStage: {
+    /* approvalStage: {
+      type:String,
       enum: ['Submission'],
-    },
+    }, */
   },
   { timestamps: true }
 );

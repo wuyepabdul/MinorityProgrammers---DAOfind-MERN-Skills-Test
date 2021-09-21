@@ -12,12 +12,7 @@ dbConnection();
 app.use(express.json({ limit: '50mb' }));
 
 app.use("/api/dao", daoRoute);
-// app.use("/api/category", categoryRoutes);
-// app.use("/api/subCategory", subCategoryRoutes);
-// app.use("/api/product", productRoutes);
-// app.use("/api/upload", uploadRoutes);
 
-// root route
 app.get('/', (req, res) => {
   res.json({ duls_online_store: 'Welcome to Duls-Online-Store' });
 });
