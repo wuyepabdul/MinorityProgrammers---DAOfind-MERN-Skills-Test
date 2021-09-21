@@ -8,6 +8,7 @@ import AddPage from './pages/AddPage';
 import Dao from './pages/Dao';
 import HomePage from './pages/HomePage';
 import LearnPage from './pages/LearnPage';
+import EditDao from './pages/EditDao';
 
 const App = () => {
   return (
@@ -39,9 +40,11 @@ const App = () => {
             <div className='content-container'>
               <Switch>
                 <Route exact path='/' component={HomePage} />
-                <Route path='/dao/:id' component={Dao} />
-                <Route path='/addDao' component={AddPage} />
-                <Route path='/learn' component={LearnPage} />
+                <Route exact path='/addDao' component={AddPage} />
+                <Route exact path='/learn' component={LearnPage} />
+                <Route exact path='/dao/:id' component={Dao} />
+                <Route exact path='/dao/update/:id' component={EditDao} />
+               
               </Switch>
             </div>
           </div>
